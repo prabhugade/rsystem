@@ -3,7 +3,7 @@
 
 	<form-beans>
 	<!-- Login UserForm... -->	
-		<form-bean name="loginform" type="org.apache.struts.validator.DynaValidatorForm">
+		<form-bean name="loginForm" type="org.apache.struts.validator.DynaValidatorForm">
 			<form-property name="username" type="java.lang.String"/>
 			<form-property name="password" type="java.lang.String"/>
 		</form-bean>
@@ -20,10 +20,17 @@
 		<action parameter="mainhome" path="/Welcome" type="org.apache.struts.actions.ForwardAction"/>
 		
 	<!-- for login page -->
-		<action parameter="ulogin" path="userlogin" type="org.apache.struts.actons.ForwardAction"/>
+		<action parameter="ulogin" path="/userlogin" type="org.apache.struts.actions.ForwardAction"/>
 		
 	<!-- for registration page -->		
-		<acton parameter="uregistration" path="registration" type="org.apache.struts.actions.ForwardAction"/>
+		<action parameter="uregistration" path="/registration" type="org.apache.struts.actions.ForwardAction"/>
+		
+	<!-- for login check submit -->
+		<action path="/login" type="com.java.struts.Login.UserLoginAction" scope="request" name="loginForm" input="ulogin" validation="true">
+			<forward name="success" path="loginsuccess"/>
+			<forward name="failed" path="ulogin"/>
+		</action> 
+		
 		
 		
 	</action-mappings>
