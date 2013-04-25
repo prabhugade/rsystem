@@ -28,7 +28,7 @@
 	<!-- for login check submit -->
 		<action path="/login" type="com.java.struts.Login.UserLoginAction" scope="request" name="loginForm" input="ulogin" validation="true">
 			<forward name="success" path="loginsuccess"/>
-			<forward name="failed" path="ulogin"/>
+			<forward name="failed" path="defaultloginhome"/>
 		</action> 
 		
 		

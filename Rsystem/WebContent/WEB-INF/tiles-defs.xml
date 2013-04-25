@@ -22,4 +22,13 @@
 	<definition name="uregistration" extends="mainhome">
 		<put name="body" value="/pages/Registration.jsp"></put>
 	</definition>
+	
+	<definition name="loginsuccess" extends="mainhome">
+		<put name="body" value="/pages/LoginSuccess.jsp"></put>
+	</definition>
+	
+	<definition name="defaultloginhome" extends="mainhome">
+		<put name="title"  value="Login" />
+		<put name="body"   value="/pages/UserLogin.jsp" />
+	</definition>
 </tiles-definitions>

@@ -5,7 +5,31 @@
 	"http://jakarta.apache.org/commons/dtds/validator_1_0.dtd">
 	
 <form-validation>	
-	<formset>		
+	<formset>	
+		<form name="loginForm">
+			<field property="username" depends="required,mask,minlength">
+				<msg name="mask" key="usrform.username.mask" />
+				<arg0 key="User name" resource="false"/>
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^[a-zA-Z0-9]*$</var-value>
+				</var>
+				<arg1 name="minlength" key="${var:minlength}" resource="false"/>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>4</var-value>
+				</var>
+			</field>	
+
+			<field property="password" depends="required,minlength">		
+				<arg0 key="Password" resource="false"/>			
+				<arg1 name="minlength" key="${var:minlength}" resource="false"/>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>4</var-value>
+				</var>
+			</field>	
+		</form>	
 	</formset>
 
 </form-validation>
