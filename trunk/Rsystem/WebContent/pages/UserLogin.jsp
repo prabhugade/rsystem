@@ -26,6 +26,19 @@
 					<td><input type="reset" value=<bean:message key="user.login.reset"/>></td>
 				</tr>
 			</table>
+			<br/>
+			<!--<html:messages id="message" property="user.login.statuserror" message="true">
+				<font class="messagedisplay"><bean:write name="message"/></font>
+			</html:messages> -->
+			<font class="errorsdisplay"><html:errors property="user.login.exception"/></font>
 		</html:form>
+		<TABLE>
+					<TR>
+						<td class="errorsdisplay"><html:errors property="username"/></td>
+					</TR>
+					<TR>
+						<td class="errorsdisplay"><html:errors property="password"/></td>	
+					</TR>
+			</TABLE>
 	</body>
 </html>
