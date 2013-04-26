@@ -18,7 +18,7 @@
 </context-param>
 <context-param>
    <param-name>password</param-name>
-   <param-value>silica</param-value>
+   <param-value>prabhu</param-value>
 </context-param>
   <!-- Standard Action Servlet Configuration (with debugging) -->
   <servlet>
