@@ -7,7 +7,18 @@
 			<form-property name="username" type="java.lang.String"/>
 			<form-property name="password" type="java.lang.String"/>
 		</form-bean>
-		
+		<form-bean name="regform" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="username" type="java.lang.String"/>
+			<form-property name="password" type="java.lang.String"/>
+			<form-property name="firstname" type="java.lang.String"/>
+			<form-property name="lastname" type="java.lang.String"/>
+			<form-property name="conformpassword" type="java.lang.String"/>
+			<form-property name="email" type="java.lang.String"/>
+			<form-property name="address" type="java.lang.String"/>
+			<form-property name="city" type="java.lang.String"/>
+			<form-property name="state" type="java.lang.String"/>
+			<form-property name="pincode" type="java.lang.String"/>
+		</form-bean>
 	</form-beans>
 	<global-exceptions/> 
 	<global-forwards>
@@ -31,7 +42,11 @@
 			<forward name="failed" path="defaultloginhome"/>
 		</action> 
 		
-		
+	<!-- for registration form -->
+		<action path="/registrer" type="com.java.struts.registration.RegistrationAction" scope="request" name="regform" input="uregistration" validation="true">
+			<forward name="success" path="loginsuccess"/>
+			<forward name="failed" path="defaultloginhome"/>
+		</action>	
 		
 	</action-mappings>
 	
