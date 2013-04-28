@@ -44,7 +44,7 @@
 		
 	<!-- for registration form -->
 		<action path="/registrer" type="com.java.struts.registration.RegistrationAction" scope="request" name="regform" input="uregistration" validation="true">
-			<forward name="success" path="loginsuccess"/>
+			<forward name="success" path="registrationsuccess"/>
 			<forward name="failed" path="defaultloginhome"/>
 		</action>	
 		

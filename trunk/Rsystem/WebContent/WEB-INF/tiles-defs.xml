@@ -27,6 +27,10 @@
 		<put name="body" value="/pages/LoginSuccess.jsp"></put>
 	</definition>
 	
+	<definition name="registrationsuccess" extends="mainhome">
+		<put name="body" value="/pages/RegisterSuccess.jsp"></put>
+	</definition>
+	
 	<definition name="defaultloginhome" extends="mainhome">
 		<put name="title"  value="Login" />
 		<put name="body"   value="/pages/UserLogin.jsp" />

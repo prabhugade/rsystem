@@ -51,5 +51,37 @@
 			</tr>
 			</table>
 		</html:form>
+		<TABLE>
+					<TR>
+						<td class="errorsdisplay"><html:errors property="username"/></td>
+					</TR>
+					<TR>
+						<td class="errorsdisplay"><html:errors property="password"/></td>	
+					</TR>
+					<TR>
+						<td class="errorsdisplay"><html:errors property="conformpassword"/></td>
+					</TR>
+					<TR>
+						<td class="errorsdisplay"><html:errors property="firstname"/></td>	
+					</TR>
+					<TR>
+						<td class="errorsdisplay"><html:errors property="lastname"/></td>
+					</TR>
+					<TR>
+						<td class="errorsdisplay"><html:errors property="email"/></td>	
+					</TR>
+					<TR>
+						<td class="errorsdisplay"><html:errors property="address"/></td>
+					</TR>
+					<TR>
+						<td class="errorsdisplay"><html:errors property="city"/></td>	
+					</TR>
+					<TR>
+						<td class="errorsdisplay"><html:errors property="state"/></td>
+					</TR>
+					<TR>
+						<td class="errorsdisplay"><html:errors property="pincode"/></td>	
+					</TR>
+			</TABLE>
 	</body>
 </html>
