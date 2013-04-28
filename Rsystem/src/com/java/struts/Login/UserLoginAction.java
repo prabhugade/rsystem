@@ -36,13 +36,11 @@ public class UserLoginAction extends Action
 				url = cg.getInitParameter("url");
 				user = cg.getInitParameter("user");
 				pwd = cg.getInitParameter("password");
-				System.out.println(driver+" "+url+" "+user+" "+pwd);
 				String username=dform.get("username").toString();
 				String password=dform.get("password").toString();
 				if(username!=null&&pwd!=null)
 				{
 					String res=new DatabaseDAO().loginCheck(driver, url, user, pwd, username, password);
-					System.out.println(res);
 					if(res.equalsIgnoreCase("success"))
 					{
 						result="success";
@@ -51,7 +49,6 @@ public class UserLoginAction extends Action
 						messages.add("user.login.statuserror", new ActionMessage(res));
 						saveMessages(request,messages);
 					}
-					System.out.println(result);
 				}
 			}				
 		}catch(Exception e)
@@ -59,7 +56,6 @@ public class UserLoginAction extends Action
 			errors.add("user.login.exception", new ActionError(e.getMessage()));
 			saveErrors(request,errors);
 		}
-		System.out.println(result);
 		return mapping.findForward(result);
 	}
 }
