@@ -1,5 +1,7 @@
 package com.java.struts.registration;
 
+import java.util.HashMap;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,7 +38,6 @@ public class RegistrationAction extends Action
 				url = cg.getInitParameter("url");
 				user = cg.getInitParameter("user");
 				pwd = cg.getInitParameter("password");
-				
 				String username=dform.get("username").toString();
 				String password=dform.get("password").toString();
 				String conformpassword=dform.get("conformpassword").toString();
@@ -47,19 +48,35 @@ public class RegistrationAction extends Action
 				String city=dform.get("city").toString();
 				String state=dform.get("state").toString();
 				String pincode=dform.get("pincode").toString();
-								
-				if(username!=null&&pwd!=null)
+				if(username!=null&&password!=null&&conformpassword!=null&&firstname!=null&&lastname!=null&&email!=null&&address!=null&&city!=null&&state!=null&&pincode!=null)
 				{
-					String res=new DatabaseDAO().loginCheck(driver, url, user, pwd, username, password);
-					if(res.equalsIgnoreCase("success"))
+					if(password.equals(conformpassword))
 					{
-						result="success";
+						HashMap<String,String> datamap=new HashMap<String,String>();
+						datamap.put("uname", username);
+						datamap.put("pwd", password);
+						datamap.put("fname", firstname);
+						datamap.put("lname", lastname);
+						datamap.put("email", email);
+						datamap.put("address", address);
+						datamap.put("city", city);
+						datamap.put("state", state);
+						datamap.put("pin", pincode);
+						String res=new DatabaseDAO().registration(driver, url, user, pwd, datamap);
+						
+						if(res.equalsIgnoreCase("success"))
+						{
+							result="success";
+						}else
+						{
+							messages.add("user.login.statuserror", new ActionMessage(res));
+							saveMessages(request,messages);
+						}
 					}else
 					{
-						messages.add("user.login.statuserror", new ActionMessage(res));
+						messages.add("user.login.statuserror", new ActionMessage("Password And Conform Password must be same"));
 						saveMessages(request,messages);
 					}
-					System.out.println(result);
 				}
 			}				
 		}catch(Exception e)
@@ -67,7 +84,6 @@ public class RegistrationAction extends Action
 			errors.add("user.login.exception", new ActionError(e.getMessage()));
 			saveErrors(request,errors);
 		}
-		System.out.println(result);
 		return mapping.findForward(result);
 	}
 }
