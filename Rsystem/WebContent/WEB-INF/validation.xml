@@ -6,6 +6,7 @@
 	
 <form-validation>	
 	<formset>	
+<!-- for login form -->
 		<form name="loginForm">
 			<field property="username" depends="required,mask,minlength">
 				<msg name="mask" key="usrform.username.mask" />
@@ -30,6 +31,8 @@
 				</var>
 			</field>	
 		</form>	
+		
+<!-- for registration form -->
 		<form name="regform">
 			<field property="username" depends="required,mask,minlength">
 				<msg name="mask" key="usrform.username.mask" />
@@ -55,7 +58,7 @@
 			</field>
 			
 			<field property="conformpassword" depends="required,minlength">		
-				<arg0 key="Password" resource="false"/>			
+				<arg0 key="conformpassword" resource="false"/>			
 				<arg1 name="minlength" key="${var:minlength}" resource="false"/>
 				<var>
 					<var-name>minlength</var-name>
