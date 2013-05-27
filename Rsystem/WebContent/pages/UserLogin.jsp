@@ -1,5 +1,6 @@
 <%@ taglib uri="/tags/struts-html" prefix="html" %>
 <%@ taglib uri="/tags/struts-bean" prefix="bean" %>
+<%@ taglib uri="/tags/struts-logic" prefix="logic" %>
 
 <html>
 	<head>
@@ -27,10 +28,12 @@
 				</tr>
 			</table>
 			<br/>
-			<!--<html:messages id="message" property="user.login.statuserror" message="true">
-				<font class="messagedisplay"><bean:write name="message"/></font>
-			</html:messages> -->
-			<font class="errorsdisplay"><html:errors property="user.login.exception"/></font>
+			<html:messages id="message" property="user.not.valid" message="true">
+			  <font class="messagedisplay"><bean:message key="user.not.valid" /></font>
+			</html:messages>
+			<html:messages id="message" property="user.not.error" message="true">
+			  <font class="messagedisplay"><bean:message key="user.not.error" /></font>
+			</html:messages>
 		</html:form>
 		<TABLE>
 					<TR>
