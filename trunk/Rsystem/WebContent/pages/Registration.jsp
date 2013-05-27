@@ -53,8 +53,8 @@
 			<html:messages id="message" property="registration.error" message="true">
 			  <font class="messagedisplay"><bean:message key="registration.error" /></font>
 			</html:messages>
-			<html:messages id="message" property="user.not.error" message="true">
-			  <font class="messagedisplay"><bean:message key="user.not.error" /></font>
+			<html:messages id="message" property="registration.pwdnotmatch" message="true">
+			  <font class="messagedisplay"><bean:message key="registration.pwdnotmatch" /></font>
 			</html:messages>
 		</html:form>
 		<TABLE>
