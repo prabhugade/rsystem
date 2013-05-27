@@ -69,19 +69,19 @@ public class RegistrationAction extends Action
 							result="success";
 						}else
 						{
-							messages.add("user.login.statuserror", new ActionMessage(res));
+							messages.add("registration.error", new ActionMessage(res));
 							saveMessages(request,messages);
 						}
 					}else
 					{
-						messages.add("user.login.statuserror", new ActionMessage("Password And Conform Password must be same"));
+						messages.add("registration.pwdnotmatch", new ActionMessage("registration.pwdnotmatch"));
 						saveMessages(request,messages);
 					}
 				}
 			}				
 		}catch(Exception e)
 		{
-			errors.add("user.login.exception", new ActionError(e.getMessage()));
+			errors.add("registration.error", new ActionError(e.getMessage()));
 			saveErrors(request,errors);
 		}
 		return mapping.findForward(result);

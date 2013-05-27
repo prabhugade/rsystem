@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.struts.Globals;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
@@ -22,10 +23,10 @@ public class UserLoginAction extends Action
 	public ActionForward execute(ActionMapping mapping, ActionForm form,HttpServletRequest request,HttpServletResponse response)throws java.lang.Exception
 	{	
 		String driver,url,user,pwd;
-		ActionErrors errors=new ActionErrors();
-		ActionMessages messages=new ActionMessages();
+		ActionMessages messages = new ActionMessages(); 
 		DynaValidatorForm dform=(DynaValidatorForm)form;
 		HttpSession session=request.getSession(true);
+		request.setAttribute("message", true);
 		String result="failed";
 		try
 		{
@@ -41,21 +42,27 @@ public class UserLoginAction extends Action
 				if(username!=null&&pwd!=null)
 				{
 					String res=new DatabaseDAO().loginCheck(driver, url, user, pwd, username, password);
+					System.out.println(res);
 					if(res.equalsIgnoreCase("success"))
 					{
 						result="success";
 					}else
 					{
-						messages.add("user.login.statuserror", new ActionMessage(res));
+						System.out.println(res);
+						messages.add("user.not.valid", new ActionMessage(res));
+						//messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage ("user.not.valid"));
 						saveMessages(request,messages);
 					}
 				}
 			}				
 		}catch(Exception e)
 		{
-			errors.add("user.login.exception", new ActionError(e.getMessage()));
-			saveErrors(request,errors);
+			System.out.println("exception");
+			messages.add("user.not.error", new ActionMessage("exception"));
+			//messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage ("user.not.valid"));
+			saveMessages(request,messages);
 		}
+		//request.setAttribute(Globals.MESSAGE_KEY, messages);
 		return mapping.findForward(result);
 	}
 }
