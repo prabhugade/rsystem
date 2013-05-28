@@ -1,10 +1,9 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<title></title>
+<title>Main Page</title>
 </head>
 <body>
-Successfully login
+	Successfully login
 </body>
 </html>
