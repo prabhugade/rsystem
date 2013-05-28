@@ -51,6 +51,11 @@
 	<!-- for profile -->
 		<action parameter="profilehome" path="/profile" type="org.apache.struts.actions.ForwardAction"/>
 		
+	<!-- for show customer data -->
+		<action path="/showprofile" type="com.java.struts.profile.GetProfileAction" scope="request">
+			<forward name="success" path="showcustdata"/>
+			<forward name="failed" path="showcustdata"/>
+		</action>
 	</action-mappings>
 	
 	<controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
