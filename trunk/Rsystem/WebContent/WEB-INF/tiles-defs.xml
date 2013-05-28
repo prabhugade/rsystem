@@ -42,5 +42,10 @@
 		<put name="body"   value="/pages/ProfileMain.jsp" />
 	</definition>
 	
+	<definition name="showcustdata" extends="loginsuccess">
+		<put name="title"  value="Profile" />
+		<put name="body"   value="/pages/ShowProfile.jsp" />
+	</definition>
+	
 	
 </tiles-definitions>
