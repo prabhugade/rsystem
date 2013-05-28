@@ -45,6 +45,8 @@ public class UserLoginAction extends Action
 					System.out.println(res);
 					if(res.equalsIgnoreCase("success"))
 					{
+						session.setAttribute("username", username);
+						session.setAttribute("password", password);
 						result="success";
 					}else
 					{

@@ -8,6 +8,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.TimeZone;
 
+import com.java.struts.profile.UserDataPojo;
+
 public class DatabaseDAO 
 {
 	TimeZone tz=null;	
@@ -84,6 +86,43 @@ public class DatabaseDAO
 			result=e.toString();
 		}
 		return result;
+	}
+	public UserDataPojo getUserInformation(String driver, String url,String user, String pwd, String username, String password) 
+	{
+		UserDataPojo resultpojo=null;
+		Connection con=null;
+		PreparedStatement ps=null;
+		try
+		{
+			con=new DatabaseConnections().connectionOpen(driver,url,user,pwd);
+			if(con!=null)
+			{
+				
+				ps=con.prepareStatement(DatabaseQueries.getProfileData);
+				ps.setString(1, username);
+				ps.setString(2, password);
+				ResultSet rs=ps.executeQuery();
+				if(rs.next())
+				{
+					resultpojo=new UserDataPojo();
+					resultpojo.setUserName(rs.getString("UserName"));
+					resultpojo.setPassword(rs.getString("Password"));
+					resultpojo.setStatus(rs.getString("Status"));
+					resultpojo.setFirstName(rs.getString("FirstName"));
+					resultpojo.setLastName(rs.getString("LastName"));
+					resultpojo.setEmail(rs.getString("Email"));
+					resultpojo.setAddress(rs.getString("Address"));
+					resultpojo.setCity(rs.getString("City"));
+					resultpojo.setState(rs.getString("State"));
+					resultpojo.setPincode(rs.getString("Pincode"));
+					resultpojo.setRegisterDate(rs.getString("RegisterDate"));
+				}
+			}
+		}catch(Exception e)
+		{
+			
+		}
+		return resultpojo;
 	}
 
 }
