@@ -1,7 +1,4 @@
 <%@ taglib uri="/tags/struts-bean" prefix="bean" %>
-<%@ taglib uri="/tags/struts-html" prefix="html" %>
-<%@ taglib uri="/tags/struts-tiles" prefix="tiles" %>
-
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css" />
