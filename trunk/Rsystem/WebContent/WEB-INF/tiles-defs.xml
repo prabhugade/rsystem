@@ -24,6 +24,7 @@
 	</definition>
 	
 	<definition name="loginsuccess" extends="mainhome">
+		<put name="menu" value="/pages/usermenu.jsp"/>
 		<put name="body" value="/pages/LoginSuccess.jsp"></put>
 	</definition>
 	
@@ -35,4 +36,11 @@
 		<put name="title"  value="Login" />
 		<put name="body"   value="/pages/UserLogin.jsp" />
 	</definition>
+	
+	<definition name="profilehome" extends="loginsuccess">
+		<put name="title"  value="Profile" />
+		<put name="body"   value="/pages/ProfileMain.jsp" />
+	</definition>
+	
+	
 </tiles-definitions>

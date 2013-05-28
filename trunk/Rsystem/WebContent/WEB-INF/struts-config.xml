@@ -48,6 +48,9 @@
 			<forward name="failed" path="uregistration"/>
 		</action>	
 		
+	<!-- for profile -->
+		<action parameter="profilehome" path="/profile" type="org.apache.struts.actions.ForwardAction"/>
+		
 	</action-mappings>
 	
 	<controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
