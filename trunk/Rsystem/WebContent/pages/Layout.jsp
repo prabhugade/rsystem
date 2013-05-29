@@ -14,7 +14,7 @@
 			</tr>
 			<tr class="bodymiddle">
 			<td  class="menu" valign="top" align="center"><tiles:insert attribute="menu"/></td>
-			  	<td  align="center" style="background-color:#F6EFDF;" valign="top"><tiles:insert attribute="body"/></td>
+			  	<td  align="center" style="background-color:#dcdcdc;" valign="top"><tiles:insert attribute="body"/></td>
 	  	    </tr>
 	  		<tr class="layoutfooter">
 			  	<td colspan="2" align="center"><tiles:insert attribute="footer"/></td>
