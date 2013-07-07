@@ -56,6 +56,19 @@
 			<forward name="success" path="showcustdata"/>
 			<forward name="failed" path="showcustdata"/>
 		</action>
+		
+	<!-- for Reminders menu -->	
+	<action parameter="reminderhome" path="/reminder" type="org.apache.struts.actions.ForwardAction"/>
+	
+	<!--  for reports menu -->
+	<action parameter="reportshome" path="/reports" type="org.apache.struts.actions.ForwardAction" />
+	
+	<!-- for show customer data -->
+		<action path="/editprofile" type="com.java.struts.profile.GetProfileAction" scope="request">
+			<forward name="success" path="editcustdata"/>
+			<forward name="failed" path="editcustdata"/>
+		</action>
+	
 	</action-mappings>
 	
 	<controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
