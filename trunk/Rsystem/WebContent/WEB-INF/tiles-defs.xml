@@ -47,5 +47,20 @@
 		<put name="body"   value="/pages/ShowProfile.jsp" />
 	</definition>
 	
+	<definition name="reminderhome" extends="loginsuccess">
+		<put name="title" value="Reminders"/>
+		<put name="body" value="/pages/Reminders.jsp"/>
+	</definition>
+	
+	<definition name="reportshome" extends="loginsuccess">
+		<put name="title" value="Reports"/>
+		<put name="body" value="/pages/Reports.jsp"/>
+	</definition>
+	
+	<definition name="editcustdata" extends="loginsuccess">
+		<put name="title"  value="Profile" />
+		<put name="body"   value="/pages/EditProfile.jsp" />
+	</definition>
+	
 	
 </tiles-definitions>

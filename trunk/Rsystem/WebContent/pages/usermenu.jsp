@@ -8,5 +8,11 @@
 <br>
 	<img src="images/menu.gif"><a href="profile.do" class="linkStyle"><bean:message key="usermenu.profile"/></a>
 <br>
+<br>
+	<img src="images/menu.gif"><a href="reminder.do" class="linkStyle"><bean:message key="usermenu.reminder"/></a>
+<br>
+<br>
+	<img src="images/menu.gif"><a href="reports.do" class="linkStyle"><bean:message key="usermenu.reports"/></a>
+<br>
 </body>
 </html>

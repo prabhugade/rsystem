@@ -19,7 +19,6 @@
 	  		<tr class="layoutfooter">
 			  	<td colspan="2" align="center"><tiles:insert attribute="footer"/></td>
 	  		</tr>
-		</table>
-		
+		</table>		
 	</body>
 </html>
