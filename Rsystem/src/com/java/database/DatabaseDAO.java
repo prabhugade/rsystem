@@ -116,6 +116,7 @@ public class DatabaseDAO
 					resultpojo.setState(rs.getString("State"));
 					resultpojo.setPincode(rs.getString("Pincode"));
 					resultpojo.setRegisterDate(rs.getString("RegisterDate"));
+					resultpojo.setUid(rs.getString("UserId"));
 				}
 			}
 		}catch(Exception e)
@@ -123,6 +124,40 @@ public class DatabaseDAO
 			
 		}
 		return resultpojo;
+	}
+	public String updateUserInformation(String driver, String url,String user, String pwd, String username, String password,String fname, String lname, String email, String address,String city, String state, String pincode,String uid) 
+	{
+		String result="failed";
+		Connection con=null;
+		PreparedStatement ps=null;
+		try
+		{
+			con=new DatabaseConnections().connectionOpen(driver,url,user,pwd);
+			if(con!=null)
+			{
+				
+				ps=con.prepareStatement(DatabaseQueries.updateProfile);
+				ps.setString(1, username);
+				ps.setString(2, password);
+				ps.setString(3, fname);
+				ps.setString(4, lname);
+				ps.setString(5, email);
+				ps.setString(6, address);
+				ps.setString(7, city);
+				ps.setString(8, state);
+				ps.setString(9, pincode);
+				ps.setString(10, uid);
+				System.out.println(ps);
+				int k=ps.executeUpdate();
+				if(k>0)
+					result="success";
+				
+			}
+		}catch(Exception e)
+		{
+			
+		}
+		return result;
 	}
 
 }
