@@ -7,8 +7,8 @@
 	<script type = "text/javascript">
 		function changeToBackAction()
 		{
-			document.updateuserform.action='profile.do';		
-			document.updateuserform.submit();	
+			document.profileform.action='profile.do';		
+			document.profileform.submit();	
 		}
 		</script>
 </head>
@@ -25,7 +25,7 @@
 			</tr>
 			<tr>
 				<td><bean:message key="profile.password" /></td>
-				<td><input type="password" name="fname" maxlength="80" size="18" value="<%=pojo.getPassword()%>"></td>
+				<td><input type="password" name="password" maxlength="80" size="18" value="<%=pojo.getPassword()%>"></td>
 			</tr>
 			<tr>
 				<td><bean:message key="profile.firstname" /></td>
@@ -54,6 +54,10 @@
 			<tr>
 				<td><bean:message key="profile.pincode" /></td>
 				<td><input type="text" name="pincode" maxlength="80" size="18" value="<%=pojo.getPincode()%>"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><input type="hidden" name="uid" maxlength="80" size="18" value="<%=pojo.getUid()%>"></td>
 			</tr>
 			<tr>
 				<td>

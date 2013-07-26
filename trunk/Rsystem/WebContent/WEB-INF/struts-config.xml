@@ -19,6 +19,18 @@
 			<form-property name="state" type="java.lang.String"/>
 			<form-property name="pincode" type="java.lang.String"/>
 		</form-bean>
+		<form-bean name="profileform" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="uname" type="java.lang.String"/>
+			<form-property name="password" type="java.lang.String"/>
+			<form-property name="fname" type="java.lang.String"/>
+			<form-property name="lname" type="java.lang.String"/>
+			<form-property name="email" type="java.lang.String"/>
+			<form-property name="address" type="java.lang.String"/>
+			<form-property name="city" type="java.lang.String"/>
+			<form-property name="state" type="java.lang.String"/>
+			<form-property name="pincode" type="java.lang.String"/>
+			<form-property name="uid" type="java.lang.String"/>
+		</form-bean>
 	</form-beans>
 	<global-exceptions/> 
 	<global-forwards>
@@ -67,6 +79,18 @@
 		<action path="/editprofile" type="com.java.struts.profile.GetProfileAction" scope="request">
 			<forward name="success" path="editcustdata"/>
 			<forward name="failed" path="editcustdata"/>
+		</action>
+		
+	<!-- for update user profile -->
+		<action path="/updateuserprofile" type="com.java.struts.profile.UpdateUserProfile" scope="request" name="profileform" input="editcustdata" validation="true">
+			<forward name="success" path="/editprofile.do"/>
+			<forward name="failed" path="/editprofile.do"/>			
+		</action>
+	
+	<!-- for add the reminders -->
+		<action path="/addreminder" type="" scope="request">
+			<forward name="" path=""/>
+			<forward name="" path=""/>
 		</action>
 	
 	</action-mappings>
