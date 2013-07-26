@@ -4,7 +4,6 @@
 <title></title>
 </head>
 <body>
-	<center>
 		<table>
 			<tr>
 				<td>
@@ -21,6 +20,5 @@
 				</td>
 			</tr>
 		</table>
-	</center>
 </body>
 </html>

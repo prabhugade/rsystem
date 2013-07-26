@@ -4,13 +4,6 @@
 <head>
 <title>Profile</title>
 <link rel="spreedsheet" type="text/css"	href="<%=request.getContextPath()%>/css/style.css"/>
-<script type = "text/javascript">
-		function changeToBackAction()
-		{
-			document.updateuserform.action='profile.do';		
-			document.updateuserform.submit();	
-		}
-		</script>
 </head>
 <body>
 	<form action="profile.do">
@@ -57,7 +50,7 @@
 			</tr>
 			<tr>
 				<td>
-					<td><input type="submit"  onClick="changeToBackAction();" value="Back"/>
+					<td><input type="submit" value="Back"/>
 				</td>
 			</tr>
 		</table>
