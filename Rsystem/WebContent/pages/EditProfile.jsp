@@ -7,13 +7,13 @@
 	<script type = "text/javascript">
 		function changeToBackAction()
 		{
-			document.profileform.action='profile.do';		
-			document.profileform.submit();	
+			document.forms[0].action='profile.do';		
+			document.forms[0].submit();	
 		}
 		</script>
 </head>
 <body>
-	<form action="updateuserprofile.do">
+	<form action="updateuserprofile.do" method="post">
 		<%
 			UserDataPojo pojo = (UserDataPojo) request.getAttribute("custdata");
 			if (pojo != null) {
