@@ -1,11 +1,10 @@
-package com.java.struts.Login;
+package com.java.struts.reminders;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.struts.Globals;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionError;
 import org.apache.struts.action.ActionErrors;
@@ -18,15 +17,15 @@ import org.apache.struts.validator.DynaValidatorForm;
 
 import com.java.database.DatabaseDAO;
 
-public class UserLoginAction extends Action
+public class AddreminderAction extends Action 
 {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,HttpServletRequest request,HttpServletResponse response)throws java.lang.Exception
 	{	
 		String driver,url,user,pwd;
+		ActionErrors errors=new ActionErrors();
 		ActionMessages messages = new ActionMessages(); 
 		DynaValidatorForm dform=(DynaValidatorForm)form;
 		HttpSession session=request.getSession(true);
-		request.setAttribute("message", true);
 		String result="failed";
 		try
 		{
@@ -37,27 +36,34 @@ public class UserLoginAction extends Action
 				url = cg.getInitParameter("url");
 				user = cg.getInitParameter("user");
 				pwd = cg.getInitParameter("password");
-				String username=dform.get("username").toString();
-				String password=dform.get("password").toString();
-				if(username!=null&&pwd!=null)
+				String username=(String)session.getAttribute("username");
+				String password=(String)session.getAttribute("password");
+				String type=dform.get("type").toString();
+				String repeat=dform.get("repeat").toString();
+				String date=dform.get("date").toString();
+				String desc=dform.get("desc").toString();
+				String msg=dform.get("msg").toString();
+				String status=dform.get("status").toString();
+				status=(status.length()>0?status:"0");
+				if(username!=null&&type!=null&&repeat!=null&&date!=null&&desc!=null&&msg!=null&&status!=null)
 				{
-					String res=new DatabaseDAO().loginCheck(driver, url, user, pwd, username, password);
-					if(res.equalsIgnoreCase("success"))
+					result=new DatabaseDAO().addReminderInformation(driver, url, user, pwd, username, password, type, repeat, date, desc, msg, status);
+					if(result.equalsIgnoreCase("success"))
 					{
-						session.setAttribute("username", username);
-						session.setAttribute("password", password);
-						result="success";
+						messages.add("reminder.success", new ActionMessage(result));
+						saveMessages(request,messages);
 					}else
 					{
-						messages.add("user.not.valid", new ActionMessage(res));
-						saveMessages(request,messages);
+							messages.add("reminder.failed", new ActionMessage(result));
+							saveMessages(request,messages);
 					}
+
 				}
 			}				
 		}catch(Exception e)
 		{
-			messages.add("user.not.error", new ActionMessage("exception"));
-			saveMessages(request,messages);
+			errors.add("registration.error", new ActionError(e.getMessage()));
+			saveErrors(request,errors);
 		}
 		return mapping.findForward(result);
 	}

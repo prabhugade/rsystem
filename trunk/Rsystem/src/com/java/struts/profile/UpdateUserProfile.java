@@ -19,7 +19,6 @@ public class UpdateUserProfile extends Action
 {
 	public ActionForward execute(ActionMapping mapping, ActionForm form,HttpServletRequest request,HttpServletResponse response)throws java.lang.Exception
 	{
-		System.out.println("start");
 		String driver,url,user,pwd;
 		DynaValidatorForm dform=(DynaValidatorForm)form;
 		HttpSession session=request.getSession(true);
@@ -43,26 +42,22 @@ public class UpdateUserProfile extends Action
 			String pincode=dform.get("pincode").toString();
 			String uid=dform.get("uid").toString();
 			
-			System.out.println(uid+" "+username);
 			res=new DatabaseDAO().updateUserInformation(driver,url,user,pwd,username,password,fname,lname,email,address,city,state,pincode,uid);
-			System.out.println(res);
 			if(res.equalsIgnoreCase("success"))
 			{
 				session.setAttribute("username", username);
 				session.setAttribute("password", password);
 				res="success";
+				messages.add("profile.success", new ActionMessage(res));
+				saveMessages(request,messages);
 			}else
 			{
-				System.out.println(res);
 				messages.add("user.not.valid", new ActionMessage(res));
-				//messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage ("user.not.valid"));
 				saveMessages(request,messages);
 			}
 		}else
 		{
-			System.out.println("exception");
 			messages.add("user.not.error", new ActionMessage("exception"));
-			//messages.add(ActionMessages.GLOBAL_MESSAGE, new ActionMessage ("user.not.valid"));
 			saveMessages(request,messages);
 		}
 		return mapping.findForward(res);

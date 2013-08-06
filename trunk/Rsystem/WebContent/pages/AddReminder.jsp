@@ -1,5 +1,6 @@
 <%@page import="com.java.struts.profile.UserDataPojo"%>
 <%@ taglib uri="/tags/struts-bean" prefix="bean"%>
+<%@ taglib uri="/tags/struts-html" prefix="html" %>
 <html>
 <head>
 <title>Add Reminder</title>
@@ -35,16 +36,16 @@
 </script>
 </head>
 <body>
-	<form action="updateuserprofile.do" method="post">
+	<form action="addremindersdata.do" method="post">
 		<table>
 			<tr>
 				<td><bean:message key="Reminder.Type" /></td>
 				<td align="left">
 					<select name="type">
-					<option value="D"><bean:message key="type.daily"/></option>
-					<option value="W"><bean:message key="type.weekly"/></option>
-					<option value="M"><bean:message key="type.monthly"/></option>
-					<option value="Y"><bean:message key="type.yearly"/></option>
+					<option value="0"><bean:message key="type.daily"/></option>
+					<option value="1"><bean:message key="type.weekly"/></option>
+					<option value="2"><bean:message key="type.monthly"/></option>
+					<option value="3"><bean:message key="type.yearly"/></option>
 					</select>					
 				</td>
 			</tr>
@@ -57,8 +58,8 @@
 				<td><bean:message key="Reminder.Repeat" /></td>
 				<td align="left">
 					<select name="repeat">
-					<option value="Y"><bean:message key="type.repeat"/></option>
-					<option value="N"><bean:message key="type.once"/></option>
+					<option value="1"><bean:message key="type.repeat"/></option>
+					<option value="0"><bean:message key="type.once"/></option>
 					</select>					
 				</td>
 			</tr>
@@ -77,15 +78,26 @@
 			</tr>
 			<tr>
 				<td><bean:message key="Reminder.Message" /></td>
-				<td><input type="text" name="msg" maxlength="80" size="18" ></td>
+				<td><textarea name="msg"></textarea></td>
+			</tr>
+			<tr>
+				<td><bean:message key="Reminder.status" /></td>
+				<td><input type="checkbox" name="status" value="1"></td>
 			</tr>
 			<tr>
 				<td>
 					<input type="submit" value=<bean:message key="Reminder.insert"/>></td>
 					<td><input type="submit"  onClick="changeToBackAction();" value="Back"/>
 				</td>
-			</tr>
-		</table>		
+			</tr>			
+		</table>
+		<br/>
+			<html:messages id="message" property="reminder.success" message="true">
+			  <font class="messagedisplay"><bean:message key="reminder.success" /></font>
+			</html:messages>	
+			<html:messages id="message" property="reminder.failed" message="true">
+			  <font class="messagedisplay"><bean:message key="reminder.failed" /></font>
+			</html:messages>
 	</form>
 </body>
 </html>
