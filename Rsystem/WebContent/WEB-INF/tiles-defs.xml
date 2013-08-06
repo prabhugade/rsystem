@@ -62,5 +62,9 @@
 		<put name="body"   value="/pages/EditProfile.jsp" />
 	</definition>
 	
+	<definition name="addreminder" extends="loginsuccess">
+		<put name="title"  value="Add Reminders" />
+		<put name="body"   value="/pages/AddReminder.jsp" />
+	</definition>
 	
 </tiles-definitions>

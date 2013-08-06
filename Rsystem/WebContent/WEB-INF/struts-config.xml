@@ -93,6 +93,9 @@
 			<forward name="" path=""/>
 		</action>
 	
+	<!-- for show customer data -->
+		<action parameter="addreminder" path="/addingreminders" type="org.apache.struts.actions.ForwardAction" />			
+	
 	</action-mappings>
 	
 	<controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
