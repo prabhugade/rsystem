@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.TimeZone;
 
 import com.java.struts.profile.UserDataPojo;
+import com.java.util.DateUtils;
 
 public class DatabaseDAO 
 {
@@ -46,6 +47,16 @@ public class DatabaseDAO
 		}catch(Exception e)
 		{
 			result=e.toString();
+		}finally
+		{
+			try
+			{
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					con.close();
+			}catch (Exception e) {
+			}
 		}
 		return result;
 	}
@@ -84,6 +95,16 @@ public class DatabaseDAO
 		}catch(Exception e)
 		{
 			result=e.toString();
+		}finally
+		{
+			try
+			{
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					con.close();
+			}catch (Exception e) {
+			}
 		}
 		return result;
 	}
@@ -122,6 +143,16 @@ public class DatabaseDAO
 		}catch(Exception e)
 		{
 			
+		}finally
+		{
+			try
+			{
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					con.close();
+			}catch (Exception e) {
+			}
 		}
 		return resultpojo;
 	}
@@ -147,7 +178,6 @@ public class DatabaseDAO
 				ps.setString(8, state);
 				ps.setString(9, pincode);
 				ps.setString(10, uid);
-				System.out.println(ps);
 				int k=ps.executeUpdate();
 				if(k>0)
 					result="success";
@@ -156,8 +186,67 @@ public class DatabaseDAO
 		}catch(Exception e)
 		{
 			
+		}finally
+		{
+			try
+			{
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					con.close();
+			}catch (Exception e) {
+			}
 		}
 		return result;
 	}
-
+	public String addReminderInformation(String driver, String url,String user, String pwd, String username, String password,String type,String repeat,String date,String desc,String msg,String status) 
+	{
+		String result="failed";
+		Connection con=null;
+		PreparedStatement ps=null;
+		try
+		{
+			String currentdate=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance(tz).getTime());
+			con=new DatabaseConnections().connectionOpen(driver,url,user,pwd);
+			if(con!=null)
+			{
+				ps=con.prepareStatement(DatabaseQueries.getProfileData);
+				ps.setString(1, username);
+				ps.setString(2, password);
+				ResultSet rs=ps.executeQuery();
+				if(rs.next())
+				{
+					String userid=rs.getString("UserId");
+					date=new DateUtils().convertdate(date, "dd-MMM-yyyy","yyyy-MM-dd");
+					ps=con.prepareStatement(DatabaseQueries.addReminders);
+					ps.setString(1, userid);
+					ps.setString(2, type);
+					ps.setString(3, repeat);
+					ps.setString(4, date);
+					ps.setString(5, currentdate);
+					ps.setString(6, desc);
+					ps.setString(7, msg);
+					ps.setString(8, status);
+					int k=ps.executeUpdate();
+					if(k>0)
+						result="success";
+				}
+				
+			}
+		}catch(Exception e)
+		{
+			
+		}finally
+		{
+			try
+			{
+				if(ps!=null)
+					ps.close();
+				if(con!=null)
+					con.close();
+			}catch (Exception e) {
+			}
+		}
+		return result;
+	}
 }

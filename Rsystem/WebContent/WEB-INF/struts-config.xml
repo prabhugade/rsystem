@@ -31,6 +31,14 @@
 			<form-property name="pincode" type="java.lang.String"/>
 			<form-property name="uid" type="java.lang.String"/>
 		</form-bean>
+		<form-bean name="reminderform" type="org.apache.struts.validator.DynaValidatorForm">
+			<form-property name="type" type="java.lang.String"/>
+			<form-property name="repeat" type="java.lang.String"/>
+			<form-property name="date" type="java.lang.String"/>
+			<form-property name="desc" type="java.lang.String"/>
+			<form-property name="msg" type="java.lang.String"/>	
+			<form-property name="status" type="java.lang.String"/>	
+		</form-bean>
 	</form-beans>
 	<global-exceptions/> 
 	<global-forwards>
@@ -87,15 +95,14 @@
 			<forward name="failed" path="/editprofile.do"/>			
 		</action>
 	
-	<!-- for add the reminders -->
-		<action path="/addreminder" type="" scope="request">
-			<forward name="" path=""/>
-			<forward name="" path=""/>
-		</action>
-	
-	<!-- for show customer data -->
+	<!-- for adding reminders link -->
 		<action parameter="addreminder" path="/addingreminders" type="org.apache.struts.actions.ForwardAction" />			
 	
+	<!-- for store the reminders adding link -->
+		<action path="/addremindersdata" type="com.java.struts.reminders.AddreminderAction" scope="request" name="reminderform" input="addingreminders" validation="true">
+			<forward name="success" path="/addingreminders.do"/>
+			<forward name="failed" path="/addingreminders.do"/>			
+		</action>
 	</action-mappings>
 	
 	<controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>

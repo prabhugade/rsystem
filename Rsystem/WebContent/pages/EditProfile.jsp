@@ -1,5 +1,6 @@
 <%@page import="com.java.struts.profile.UserDataPojo"%>
 <%@ taglib uri="/tags/struts-bean" prefix="bean"%>
+<%@ taglib uri="/tags/struts-html" prefix="html" %>
 <html>
 <head>
 <title>Profile</title>
@@ -66,6 +67,16 @@
 				</td>
 			</tr>
 		</table>
+		<br/>
+			<html:messages id="message" property="profile.success" message="true">
+			  <font class="messagedisplay"><bean:message key="profile.success" /></font>
+			</html:messages>	
+			<html:messages id="message" property="user.not.valid" message="true">
+			  <font class="messagedisplay"><bean:message key="user.not.valid" /></font>
+			</html:messages>
+			<html:messages id="message" property="user.not.error" message="true">
+			  <font class="messagedisplay"><bean:message key="user.not.error" /></font>
+			</html:messages>
 		<%
 			}
 		%>
